@@ -36,6 +36,7 @@ const styles = {
 
 const NowWhat = props => {
   const { classes } = props;
+  //<Card className={classes.card}></Card>
   return (
     <Card className={classes.card}>
       <CardHeader title="OK, packiaraj, you're all setup. Now What?" />

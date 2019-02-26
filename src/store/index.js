@@ -3,10 +3,12 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import createSagaMiddleware from "redux-saga";
 import sagas from "./sagas";
 import weatherReducer from "./reducers/Weather";
+import droneReducer from "./reducers/Drone";
 
 export default () => {
   const rootReducer = combineReducers({
-    weather: weatherReducer
+    weather: weatherReducer,
+    drone: droneReducer
   });
 
   const composeEnhancers = composeWithDevTools({});
