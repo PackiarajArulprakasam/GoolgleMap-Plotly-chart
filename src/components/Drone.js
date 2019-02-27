@@ -28,12 +28,15 @@ const styles = {
 
 class Drone extends Component {
   componentDidMount() {
-    setInterval(() => {
-      this.props.onLoad();
-    }, 3000);
+    this.props.onLoad();
   }
   render() {
-    const { loadingDrone, latitude, longitude } = this.props;
+    const {
+      loadingDrone,
+      latitude,
+      longitude,
+      temperatureinFahrenheit
+    } = this.props;
 
     if (loadingDrone) return <LinearProgress />;
 
@@ -43,7 +46,11 @@ class Drone extends Component {
       <Card className={classes.card}>
         <CardHeader title="Live drone tracking" />
         <CardContent>
-          <MapView latitude={latitude} longitude={longitude} />
+          <MapView
+            latitude={latitude}
+            longitude={longitude}
+            temperatureinFahrenheit={temperatureinFahrenheit}
+          />
           <div id="myDiv" />
         </CardContent>
       </Card>

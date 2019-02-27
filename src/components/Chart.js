@@ -27,7 +27,7 @@ const styles = {
 
 class Chart extends Component {
   render() {
-    const { loadingDrone, temprature, time } = this.props;
+    const { loadingDrone, temprature_data, time } = this.props;
 
     if (loadingDrone) return <LinearProgress />;
 
@@ -37,7 +37,7 @@ class Chart extends Component {
       <Card className={classes.card}>
         <CardHeader title="Temprature (F) around houston in last 30 mins" />
         <CardContent>
-          <PlotChart temprature={temprature} time={time} />
+          <PlotChart temprature_data={temprature_data} time={time} />
         </CardContent>
       </Card>
     );
@@ -45,9 +45,9 @@ class Chart extends Component {
 }
 
 const mapState = (state, ownProps) => {
-  const { temprature, time, loadingDrone } = state.drone;
+  const { temprature_data, time, loadingDrone } = state.drone;
   return {
-    temprature,
+    temprature_data,
     time,
     loadingDrone
   };

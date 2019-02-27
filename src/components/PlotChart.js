@@ -3,14 +3,14 @@ import Plot from "react-plotly.js";
 
 class PlotChart extends React.Component {
   render() {
-    const { temprature, time } = this.props;
+    const { temprature_data, time } = this.props;
 
     const chartData = {
       type: "scatter",
       mode: "lines",
       name: "Temprature",
       x: time,
-      y: temprature,
+      y: temprature_data,
       line: { color: "#17BECF" },
       marker: { color: "blue" }
     };

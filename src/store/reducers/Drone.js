@@ -13,9 +13,11 @@ const droneDataRecevied = (state, action) => {
   const { data } = action;
 
   if (!data) return state;
-  //set the
+  //get the latest data from the 30 mins data
   const latestData = data["data"].length - 1;
-  const { latitude, longitude } = data["data"][latestData];
+  const { latitude, longitude, metric: temperatureinFahrenheit } = data["data"][
+    latestData
+  ];
 
   // Sample response from API
   // {
@@ -30,7 +32,7 @@ const droneDataRecevied = (state, action) => {
   const tempratureData = [...data["data"]];
 
   //set the y-axis = metric and x-axis = timestamp
-  const temprature = tempratureData.map(data => data.metric);
+  const temprature_data = tempratureData.map(data => data.metric);
   const time = tempratureData.map(data => new Date(data.timestamp));
 
   return {
@@ -38,7 +40,8 @@ const droneDataRecevied = (state, action) => {
     loadingDrone: false,
     latitude,
     longitude,
-    temprature,
+    temperatureinFahrenheit,
+    temprature_data,
     time
   };
 };

@@ -1,4 +1,4 @@
-import { takeEvery, call, put, cancel } from "redux-saga/effects";
+import { takeEvery, call, put, cancel, delay } from "redux-saga/effects";
 import API from "../api";
 import * as actions from "../actions";
 
@@ -16,21 +16,26 @@ import * as actions from "../actions";
 */
 
 // once the FETCH_DRONE is fired, get the drone data
+
 function* watchFetchDrone() {
   //call the drone API
-  const { error, data } = yield call(API.findDrone);
-  if (error) {
-    yield put({ type: actions.API_ERROR, code: error.code });
-    yield cancel();
-    return;
-  }
+  while (true) {
+    const { error, data } = yield call(API.findDrone);
+    if (error) {
+      yield put({ type: actions.API_ERROR, code: error.code });
+      yield cancel();
+      return;
+    }
 
-  if (!data) {
-    yield put({ type: actions.API_ERROR });
-    yield cancel();
-    return;
+    if (!data) {
+      yield put({ type: actions.API_ERROR });
+      yield cancel();
+      return;
+    }
+    yield put({ type: actions.DRONE_DATA_RECEIVED, data });
+
+    yield delay(3000);
   }
-  yield put({ type: actions.DRONE_DATA_RECEIVED, data });
 }
 
 function* watchDrone() {

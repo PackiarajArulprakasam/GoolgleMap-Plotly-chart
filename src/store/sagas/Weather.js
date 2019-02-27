@@ -1,4 +1,4 @@
-import { takeEvery, call, put, cancel, all } from "redux-saga/effects";
+import { takeEvery, call, put, cancel, all, delay } from "redux-saga/effects";
 import API from "../api";
 import * as actions from "../actions";
 
@@ -18,14 +18,18 @@ import * as actions from "../actions";
 */
 
 function* watchWeatherIdReceived(action) {
-  const { id } = action;
-  const { error, data } = yield call(API.findWeatherbyId, id);
-  if (error) {
-    yield put({ type: actions.API_ERROR, code: error.code });
-    yield cancel();
-    return;
+  while (true) {
+    const { id } = action;
+    const { error, data } = yield call(API.findWeatherbyId, id);
+    if (error) {
+      yield put({ type: actions.API_ERROR, code: error.code });
+      yield cancel();
+      return;
+    }
+    yield put({ type: actions.WEATHER_DATA_RECEIVED, data });
+    yield delay(3000);
+    console.log(data);
   }
-  yield put({ type: actions.WEATHER_DATA_RECEIVED, data });
 }
 
 function* watchFetchWeather(action) {
@@ -36,7 +40,6 @@ function* watchFetchWeather(action) {
     longitude
   );
   if (error) {
-    console.log({ error });
     yield put({ type: actions.API_ERROR, code: error.code });
     yield cancel();
     return;

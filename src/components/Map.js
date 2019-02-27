@@ -4,7 +4,8 @@ import {
   withScriptjs,
   withGoogleMap,
   GoogleMap,
-  Marker
+  Marker,
+  InfoWindow
 } from "react-google-maps";
 
 const MapComponent = compose(
@@ -17,24 +18,38 @@ const MapComponent = compose(
   }),
   withScriptjs,
   withGoogleMap
-)(props => (
-  <GoogleMap
-    defaultZoom={4}
-    defaultCenter={{
-      lat: 29.7604,
-      lng: -95.3698
-    }}
-  >
-    {props.isMarkerShown && (
-      <Marker
-        position={{
-          lat: props.currentLocation.lat,
-          lng: props.currentLocation.lng
-        }}
-        onClick={props.onMarkerClick}
-      />
-    )}
-  </GoogleMap>
-));
+)(props => {
+  return (
+    <GoogleMap
+      defaultZoom={4}
+      defaultCenter={{
+        lat: 29.7604,
+        lng: -95.3698
+      }}
+    >
+      {props.isMarkerShown && (
+        <Marker
+          position={{
+            lat: props.currentLocation.lat,
+            lng: props.currentLocation.lng
+          }}
+          onClick={props.onMarkerClick}
+        >
+          {props.isInfoOpen && (
+            <InfoWindow>
+              <div>
+                City : {props.city} <br />
+                Temprature(F): {props.temperatureinFahrenheit}
+                <br />
+                Weather : {props.weather}
+                <br />
+              </div>
+            </InfoWindow>
+          )}
+        </Marker>
+      )}
+    </GoogleMap>
+  );
+});
 
 export default MapComponent;

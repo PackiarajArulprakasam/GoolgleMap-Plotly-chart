@@ -1,0 +1,16 @@
+.popup {
+  height: 35px;
+  width: 200px;
+  top: 0px;
+  right: 0px;
+  position: fixed;
+  text-align: left;
+  padding: 15px;
+  border-radius: 3px;
+  margin: 10px;
+}
+
+.message {
+  padding: 5px;
+  font-size: 14px;
+}

@@ -14,7 +14,7 @@
     "react-scripts": "^2.1.5",
     "react-toastify": "^4.4.0",
     "redux": "^4.0.1",
-    "redux-saga": "^0.16.2"
+    "redux-saga": "^1.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -33,5 +33,6 @@
   ],
   "devDependencies": {
     "redux-devtools-extension": "^2.13.5"
-  }
+  },
+  "proxy": "http://localhost:3000"
 }
