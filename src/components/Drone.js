@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../store/actions";
+import { getDroneData } from "../Selectors/getDroneData";
+import { createSelector } from "reselect";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import { withStyles } from "@material-ui/core/styles";
 import MapView from "./MapView";
@@ -58,20 +60,17 @@ class Drone extends Component {
   }
 }
 
-const mapState = (state, ownProps) => {
-  const {
+// Using reslect for mapState on top of the field level selectors from getDroneData.js
+
+const mapStateSelector = createSelector(
+  getDroneData,
+  ({ temperatureinFahrenheit, latitude, longitude, loadingDrone }) => ({
     temperatureinFahrenheit,
     latitude,
     longitude,
     loadingDrone
-  } = state.drone;
-  return {
-    temperatureinFahrenheit,
-    latitude,
-    longitude,
-    loadingDrone
-  };
-};
+  })
+);
 
 const mapDispatch = dispatch => ({
   onLoad: () =>
@@ -81,6 +80,6 @@ const mapDispatch = dispatch => ({
 });
 
 export default connect(
-  mapState,
+  mapStateSelector,
   mapDispatch
 )(withStyles(styles)(Drone));

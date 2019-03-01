@@ -38,10 +38,8 @@ const MapComponent = compose(
           {props.isInfoOpen && (
             <InfoWindow>
               <div>
-                City : {props.city} <br />
-                Temprature(F): {props.temperatureinFahrenheit}
-                <br />
-                Weather : {props.weather}
+                Weather in {props.city} {props.weather} and{" "}
+                {props.temperatureinFahrenheit}˚F
                 <br />
               </div>
             </InfoWindow>

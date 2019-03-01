@@ -18,12 +18,17 @@ class MapView extends Component {
     };
   }
 
-  getWeatherData = async (latitude, longitude) => {
+  async componentDidUpdate() {
+    // Get the city, weather and update the local state
+    const { latitude, longitude } = this.props;
     try {
+      // Call findLocationByLatLng API to get the woeid
+
       const latlon = [latitude, longitude].join(",");
       const data = await API.findLocationByLatLng(latlon);
       const id = data["data"][0].woeid;
 
+      // Call findWeatherbyId API to get the city and weather
       const weatherData = await API.findWeatherbyId(id);
       const weather = weatherData["data"].consolidated_weather[0];
       const { weather_state_name } = weather;
@@ -35,8 +40,8 @@ class MapView extends Component {
       this.setState({
         ...this.state,
         currentLatLng: {
-          lat: this.props.latitude,
-          lng: this.props.longitude
+          lat: latitude,
+          lng: longitude
         },
         temperatureinFahrenheit: temperature_rounded,
         city,
@@ -47,11 +52,6 @@ class MapView extends Component {
         toast.error(error.response.data);
       }
     }
-  };
-
-  componentWillReceiveProps() {
-    // Get the city, weather and update the local state
-    this.getWeatherData(this.props.latitude, this.props.longitude);
   }
 
   handleMarkerClick = () => {

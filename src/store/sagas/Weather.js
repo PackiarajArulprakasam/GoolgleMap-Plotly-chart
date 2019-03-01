@@ -27,8 +27,7 @@ function* watchWeatherIdReceived(action) {
       return;
     }
     yield put({ type: actions.WEATHER_DATA_RECEIVED, data });
-    yield delay(3000);
-    console.log(data);
+    yield delay(5000);
   }
 }
 
