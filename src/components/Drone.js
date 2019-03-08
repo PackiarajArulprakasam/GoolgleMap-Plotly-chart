@@ -29,6 +29,7 @@ const styles = {
 
 class Drone extends Component {
   componentDidMount() {
+    console.log("from drone componentDidMount");
     this.props.onLoad();
   }
   render() {
@@ -47,7 +48,7 @@ class Drone extends Component {
       <Card className={classes.card}>
         <CardHeader title="Live drone tracking" />
         <CardContent>
-          <MapView  
+          <MapView
             latitude={latitude}
             longitude={longitude}
             temperatureinFahrenheit={temperatureinFahrenheit}

@@ -20,6 +20,7 @@ import * as actions from "../actions";
 function* watchFetchDrone() {
   //call the drone API
   while (true) {
+    console.log("from drone sagas");
     const { error, data } = yield call(API.findDrone);
     if (error) {
       yield put({ type: actions.API_ERROR, code: error.code });

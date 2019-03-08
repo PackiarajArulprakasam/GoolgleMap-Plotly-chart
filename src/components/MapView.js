@@ -18,9 +18,9 @@ class MapView extends Component {
     };
   }
 
-  async componentDidUpdate() {
+  async componentWillReceiveProps(props) {
     // Get the city, weather and update the local state
-    const { latitude, longitude } = this.props;
+    const { latitude, longitude } = props;
     try {
       // Call findLocationByLatLng API to get the woeid
 
