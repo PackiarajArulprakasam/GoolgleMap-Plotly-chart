@@ -10,7 +10,6 @@ import Wrapper from "./components/Wrapper";
 import NowWhat from "./components/NowWhat";
 import Drone from "./components/Drone";
 import Chart from "./components/Chart";
-import "./App.css";
 
 const store = createStore();
 

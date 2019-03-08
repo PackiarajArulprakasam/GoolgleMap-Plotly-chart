@@ -9,7 +9,6 @@ import MapView from "./MapView";
 import Card from "@material-ui/core/Card";
 import CardHeaderRaw from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
-import "../App.css";
 
 const cardStyles = theme => ({
   root: {
@@ -48,7 +47,7 @@ class Drone extends Component {
       <Card className={classes.card}>
         <CardHeader title="Live drone tracking" />
         <CardContent>
-          <MapView
+          <MapView  
             latitude={latitude}
             longitude={longitude}
             temperatureinFahrenheit={temperatureinFahrenheit}

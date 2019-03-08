@@ -14,7 +14,7 @@ const styles = {
 const Header = props => {
   const { classes } = props;
 
-  const name = "packiaraj's";
+  const name = "Packiaraj's";
   return (
     <AppBar position="static">
       <Toolbar>

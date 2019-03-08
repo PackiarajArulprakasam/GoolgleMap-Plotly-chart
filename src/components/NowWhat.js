@@ -38,7 +38,7 @@ const NowWhat = props => {
   const { classes } = props;
   return (
     <Card className={classes.card}>
-      <CardHeader title="OK, packiaraj, you're all setup. Now What?" />
+      <CardHeader title="OK, Packiaraj, you're all setup. Now What?" />
       <CardContent>
         <List>
           <ListItem>

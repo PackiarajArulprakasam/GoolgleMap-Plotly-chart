@@ -6,7 +6,6 @@ import Card from "@material-ui/core/Card";
 import CardHeaderRaw from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
 import PlotChart from "./PlotChart";
-import "../App.css";
 
 const cardStyles = theme => ({
   root: {
@@ -27,7 +26,7 @@ const styles = {
 
 class Chart extends Component {
   render() {
-    const { loadingDrone, temprature_data, time } = this.props;
+    const { loadingDrone, temprature_data, time_data } = this.props;
 
     if (loadingDrone) return <LinearProgress />;
 
@@ -37,18 +36,18 @@ class Chart extends Component {
       <Card className={classes.card}>
         <CardHeader title="Temprature (F) around houston in last 30 mins" />
         <CardContent>
-          <PlotChart temprature_data={temprature_data} time={time} />
+          <PlotChart temprature_data={temprature_data} time_data={time_data} />
         </CardContent>
       </Card>
     );
   }
 }
 
-const mapState = (state, ownProps) => {
-  const { temprature_data, time, loadingDrone } = state.drone;
+const mapState = state => {
+  const { temprature_data, time_data, loadingDrone } = state.drone;
   return {
     temprature_data,
-    time,
+    time_data,
     loadingDrone
   };
 };

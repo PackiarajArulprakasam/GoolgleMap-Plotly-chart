@@ -3,7 +3,7 @@ import API from "../api";
 import * as actions from "../actions";
 
 /*
-  1. The drone service retruns the location and temprature of the drone for last 30 sec.
+  1. The drone service retruns the location and temprature of the drone for last 30 minutes.
 
   This process is pretty well defined here with a saga.
 

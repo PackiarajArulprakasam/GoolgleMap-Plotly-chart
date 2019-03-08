@@ -10,14 +10,16 @@ import {
 
 const MapComponent = compose(
   withProps({
+    // for withScripts
     googleMapURL:
       "https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places",
     loadingElement: <div style={{ height: `100%` }} />,
+    // for withGoogleMap
     containerElement: <div style={{ height: `400px`, width: `600px` }} />,
     mapElement: <div style={{ height: `100%` }} />
   }),
-  withScriptjs,
-  withGoogleMap
+  withScriptjs, // HOC - initializes the map component ( MapComponent)
+  withGoogleMap // HOC - loads the Google Maps Javascript API v3
 )(props => {
   return (
     <GoogleMap
@@ -38,7 +40,7 @@ const MapComponent = compose(
           {props.isInfoOpen && (
             <InfoWindow>
               <div>
-                Weather in {props.city} {props.weather} and{" "}
+                Weather in {props.city}: {props.weather} and{" "}
                 {props.temperatureinFahrenheit}˚F
                 <br />
               </div>
