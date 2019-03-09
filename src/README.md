@@ -1,6 +1,4 @@
-===============================================================================
 Create Drone reducer, saga, API to get data
-===============================================================================
 Drone.js (Component)
 
 1.  Redner the MapView component with lat,lan as parms.
@@ -27,9 +25,8 @@ findDrone.js (API)
 11. Create the API to fetch the drone date
 12. In case of errors, should be notified using React toastify
 
-================================================================================
 Create Map and MapView components
-================================================================================
+
 Install react-google-maps
 
 Create Map, MapView components to render the google map with live co-ordinates
@@ -48,9 +45,8 @@ MapView.js
 17. Also, receives the temperature data as props.
 18. Renders the Map component.
 
-================================================================================
 Create Chart and Plot Chart components
-================================================================================
+
 install plotly.js, react-plotly.js
 Chart.js
 
@@ -61,8 +57,6 @@ Chart.js
 
 PlotChart.js
 Takes the x and y axis data and render the graph
-
-=================================================================================
 
 1. Removed the set Interval from Drone.js and Weather.js and added while loop/3mins delay in respective sagas.
 2. Added changes in MapView and Map components to get the city, weather.
