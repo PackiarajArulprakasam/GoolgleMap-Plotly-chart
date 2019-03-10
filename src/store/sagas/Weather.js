@@ -19,8 +19,6 @@ import * as actions from "../actions";
 
 function* watchWeatherIdReceived(action) {
   while (true) {
-    console.log("from weather sagas");
-
     const { id } = action;
     const { error, data } = yield call(API.findWeatherbyId, id);
     if (error) {
@@ -29,7 +27,7 @@ function* watchWeatherIdReceived(action) {
       return;
     }
     yield put({ type: actions.WEATHER_DATA_RECEIVED, data });
-    yield delay(5000);
+    yield delay(15000);
   }
 }
 

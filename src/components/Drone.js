@@ -29,7 +29,6 @@ const styles = {
 
 class Drone extends Component {
   componentDidMount() {
-    console.log("from drone componentDidMount");
     this.props.onLoad();
   }
   render() {

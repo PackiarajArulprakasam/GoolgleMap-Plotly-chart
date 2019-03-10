@@ -67,9 +67,15 @@ Recent changes:
 MapView.js
 
 Issue:
-The chained network calls were due to the change from componentWillReceiveProps to componentDidUpdate. Should have implemented the shouldComponentUpdate method to avoid
+The chained network calls were due to the switch from componentWillReceiveProps to componentDidUpdate. Should have implemented the shouldComponentUpdate method to avoid
 unwanted rendering and execution of componentDidUpdate which implements the ajax calls to get the city and weather data.
 
-Fix made:
-Changed the recent implementation of componentWillReceiveProps to componentDidUpdate
-and implemented the shouldComponentUpdate to avoid unwanted network calls.
+Fixes made:
+
+1. componentWillReceiveProps - deprecated. So, changed the previous implementation of componentWillReceiveProps to componentDidUpdate.
+2. Moved the Ajax calls to get the city and weather info from componentDidUpdate
+   to handleMarkerClick to fetch the weather data ONLY when the pin is clicked.
+   This significantly reduced the # of network calls.
+3. Implemented the shouldComponentUpdate to avoid unwanted network calls. This fixed the chained network calls.
+
+Overall, these changes brought down the total network calls to 27 requests/minute.
