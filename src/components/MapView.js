@@ -18,9 +18,18 @@ class MapView extends Component {
     };
   }
 
-  async componentWillReceiveProps(props) {
+  shouldComponentUpdate(nextProps) {
+    return nextProps !== this.props ? true : false;
+  }
+  /**
+   * componentWillReceiveProps - deprecated
+   * so, changed the from componentWillReceiveProps to  componentDidUpdate
+   * and implemented the shouldComponentUpdate to avoid unwanted network calls
+   **/
+
+  async componentDidUpdate() {
     // Get the city, weather and update the local state
-    const { latitude, longitude } = props;
+    const { latitude, longitude } = this.props;
     try {
       // Call findLocationByLatLng API to get the woeid
 

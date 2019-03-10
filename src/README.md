@@ -62,3 +62,14 @@ Takes the x and y axis data and render the graph
 2. Added changes in MapView and Map components to get the city, weather.
 3. Added Info Window with city, temperature and weather in Map component.
 4. Implemented selectors for the drone data using `reselect`.
+
+Recent changes:
+MapView.js
+
+Issue:
+The chained network calls were due to the change from componentWillReceiveProps to componentDidUpdate. Should have implemented the shouldComponentUpdate method to avoid
+unwanted rendering and execution of componentDidUpdate which implements the ajax calls to get the city and weather data.
+
+Fix made:
+Changed the recent implementation of componentWillReceiveProps to componentDidUpdate
+and implemented the shouldComponentUpdate to avoid unwanted network calls.
